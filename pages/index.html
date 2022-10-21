@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+   #loader {
+    border: 12px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 12px solid #444444;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s linear infinite;
+}
+  
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+  
+.center {
+    position: fixed;
+    z-index: 3000;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+</style>
+
+<script>
+          //loading
+     
+          document.onreadystatechange = function() {
+            if (document.readyState !== "complete") {
+                document.querySelector(
+                  "body").style.visibility = "";
+                document.querySelector(
+                  "#loader").style.visibility = "visible";
+            } else {
+                document.querySelector(
+                  "#loader").style.display = "none";
+                document.querySelector(
+                  "body").style.visibility = "";
+            }
+        };
+</script>
+<title>Modern Design</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="keywords" content="طب سنتی, طب, داروخانه, شفا, تله مدیسن, بهبودخانه, بهبود خانه, behboodkhaneh, fif,nohki, fif,n ohki">
+<meta name="description" lang="fa" content="سایت تخصصی پزشکی تلفیقی با رویکرد طب سنتی ایرانی">
+<meta name="description" lang="en" content="Telemedicine - Combined medicine with the approach of traditional Persian medicine">
+<meta name="author" lang="en" content="FRYSTIC">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#d4e1f2">
+<meta name="msapplication-navbutton-color" content="#d4e1f2">
+<meta name="msapplication-TileColor" content="#d4e1f2">
+<meta name="msapplication-TileImage" content="/icon-144x144.png">
+<meta name="robots" content="noindex, nofollow">
+<link rel="shortcut icon" href="/img/icon/ico.ico">
+<link rel="manifest" href="/Behboodkhaneh.webmanifest">
+<link rel="alternate" href="https://www.behboodkhaneh.com">
+
+<script src='%PUBLIC_URL%/js/jquery.min.js'></script>
+<script src="%PUBLIC_URL%/js/script.js"></script>
+<script src="%PUBLIC_URL%/js/swiper.js"></script>
+<script src="%PUBLIC_URL%/js/app.js"></script>
+<script src="%PUBLIC_URL%/js/crypto-price.js"></script>
+
+<link rel="stylesheet" href="%PUBLIC_URL%/css/swiper.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/css/base.css">
+<link rel="stylesheet" href="%PUBLIC_URL%/css/theme.css">
+<link rel="stylesheet" media="screen and (min-width: 100px) and (max-width: 499px)" href="%PUBLIC_URL%/css/mobile.css">
+<link rel="stylesheet" media="screen and (min-width: 500px) and (max-width: 999px)" href="%PUBLIC_URL%/css/tablet.css">
+<link rel="stylesheet" media="screen and (min-width: 1000px) and (max-width: 1399px)" href="%PUBLIC_URL%/css/mini-desktop.css">
+<link rel="stylesheet" media="screen and (min-width: 1400px)" href="css/desktop.css">
+
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+
+    ///darkmode memory
+            var app = document.getElementsByTagName("BODY")[0];
+          if (localStorage.lightMode == "dark") {
+              app.setAttribute("light-mode", "dark");
+          }
+    
+          function toggle_light_mode() {
+              var app = document.getElementsByTagName("BODY")[0];
+              if (localStorage.lightMode == "dark") {
+                  localStorage.lightMode = "light";
+                  app.setAttribute("light-mode", "light");
+              } else {
+                  localStorage.lightMode = "dark";
+                  app.setAttribute("light-mode", "dark");
+              }       
+          }
+    
+      window.addEventListener("storage", function () {
+        if (localStorage.lightMode == "dark") {
+          app.setAttribute("light-mode", "dark");
+        } else {
+          app.setAttribute("light-mode", "light");
+        }
+      }, false);
+      
+    
+    ///
+    
+    /// top slider
+            
+            var swiper = new Swiper(".main-slider", {
+              spaceBetween: 30,
+              centeredSlides: true,
+              autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+              },
+          hashNavigation: {
+            watchState: true,
+          },
+            });
+    
+    
+    
+    /// product sliders 
+    
+    function dependsOnSize(){
+      if((window.innerWidth >= 200 && window.innerWidth <= 499 )){ return 1.8; } else {
+             if((window.innerWidth >= 500 && window.innerWidth <= 999 )){ return 3.5; } else {     
+                 if((window.innerWidth >= 1000 && window.innerWidth <= 1399 )){ return 4; } else {
+                    if((window.innerWidth >= 1400)){ return 5.5; }
+      }}}};
+                    
+            var swiper = new Swiper(".scrolling-wrapper", {
+              spaceBetween: 0,
+              freeMode: true,
+              slidesPerView: dependsOnSize(),
+              hashNavigation: {
+                  watchState: true,
+               },
+            });
+    
+    
+    
+    
+    
+    
+    ///////////////////////////// The 01 Wrapper
+    
+      filterSelection("all")
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filter01");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+      
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+      
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+      
+      // Add active class to the current button (highlight it)
+      var btnContainer = document.getElementById("BtnContainer01");
+      var btns = btnContainer.getElementsByClassName("btn01");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    
+    
+    
+    
+    
+    
+      // When the user scrolls down 20px from the top of the document, slide down the navbar
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("navbar-bg").style.top = "0";
+      } else {
+        document.getElementById("navbar-bg").style.top = "-100px";
+      }
+    }
+    
+    
+    
+    // search modal
+    var modal = document.getElementById("searchModal");
+        var btn = document.getElementById("searchModalBtn");
+        var span = document.getElementsByClassName("close")[0];
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      
+      </script>
+    
+    
+    
+    </body>
+    </html>
+    
